@@ -20,16 +20,13 @@ add_action( 'plugins_loaded', 'sample_plugin_initialize_license' );
 function sample_plugin_initialize_license() {
     global $sample_plugin_license;
 
-    $plugin_file	= __FILE__;		// reference to the main plugin file. required.
-
-    $item_id		= 352;			// the `Item ID` found in the developer dashboared. required.
-
-    $args			= [				// some settings. optional.
+    $plugin_file = __FILE__; 	// reference to the main plugin file. required.
+    $args 	= [		// some settings. optional.
     	'hide_notice'	=> true,	// Should we hide the license notice from the dashboard? Default is `false`.
-    	'redirect'		=> 	admin_url( 'admin.php?page=sample-plugin' ), // Where should it take after activating the license? Default is the current page
+    	'redirect'	=> admin_url( 'admin.php?page=sample-plugin' ), // Where should it take after activating the license? Default is the current page
     ];
 
-    $sample_plugin_license = new License( $plugin_file, $item_id, $args );
+    $sample_plugin_license = new License( $plugin_file, $args );
 }
 
 /**
